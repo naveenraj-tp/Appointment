@@ -1,0 +1,27 @@
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<Appoinment_Schedule.Models.ApplicationUser> signInManager
+
+@if (signInManager.IsSignedIn(User))
+{
+
+    <form method="post" id="logoutform" asp-action="LogOff" asp-controller="Account">
+        <ul class="nav navbar-nav">
+            <li class="text-white nav-link">
+                Hello,@User.Identity.Name
+            </li>
+            <li> <a  class="nav-link text-white" href="javascript:document.getElementById('logoutform').submit()"> Logg Off</a></li>
+        </ul>
+
+    </form>
+}
+else
+{
+    <ul class="nav navbar-nav">
+
+        <li>
+            <a class="nav-link text-white" id="registerLink" asp-controller="Account" asp-action="Register">Register</a>
+        </li>
+        <li>
+            <a class="nav-link text-white" id="loginLink" asp-controller="Account" asp-action="Login">Sign In</a>
+        </li>
+    </ul>
+}
